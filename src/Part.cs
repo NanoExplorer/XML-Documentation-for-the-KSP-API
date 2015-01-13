@@ -191,7 +191,7 @@ public class Part : MonoBehaviour
     public int PhysicsSignificance;
     public Part potentialParent;
     public List<ProtoCrewMember> protoModuleCrew;
-    public ProtoPart protoPartRef;
+    //public ProtoPart protoPartRef;
     public ProtoPartSnapshot protoPartSnapshot;
     public float rescaleFactor;
     protected List<Part> resourceTargets;
