@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>XMLDocumentation</name>
+        <name>XmlDoc</name>
     </assembly>
     <members>
         <member name="T:ApplicationLauncher">
@@ -2600,7 +2600,7 @@
         </member>
         <member name="F:GameEvents.onPartAttach">
             <summary>
-            Triggered when adding a part in the editor, or when docking;
+            Triggered when adding a part in the editor, when docking, and when another vessel comes into range and is loaded;
             returns the part and its new parent part
             </summary>
         </member>
@@ -3235,6 +3235,18 @@
             Opens the experimental results dialog page, displays stored Science Data.
             </summary>
             <param name="data"></param>
+        </member>
+        <member name="T:ITargetable">
+            <summary>
+            Represents something that can be set as target while controlling
+            a vessel. This is implemented by <see cref="T:Vessel"/>, <see cref="T:CelestialBody"/>,
+            and <see cref="T:ModuleDockingNode"/>.
+            </summary>
+        </member>
+        <member name="M:ITargetable.GetName">
+            <summary>
+            The name of this target.
+            </summary>
         </member>
         <member name="T:KerbalEVA">
             <summary>
@@ -4510,6 +4522,7 @@
             </summary>
             <returns>A unit normal vector.</returns>
         </member>
+        <!-- Badly formed XML comment ignored for member "M:Orbit.getRelativePositionAtT(System.Double)" -->
         <member name="M:Orbit.getRelativePositionAtUT(System.Double)">
             <summary>
             Gets the predicted displacement of the orbiting object from the center of the main
@@ -4548,7 +4561,7 @@
             <summary>
             The distance the orbiting object will be from the center of the main body when it reaches the given true anomaly.
             </summary>
-            <param name="tA">True anomaly (in degrees or radians?)</param>
+            <param name="tA">True anomaly (in degrees)</param>
             <returns>Distance from the main body's center, in meters</returns>
         </member>
         <member name="M:Orbit.TrueAnomalyAtRadius(System.Double)">
@@ -6069,6 +6082,31 @@
         <member name="F:Vessel.Situations.ESCAPING">
             <summary>
             On a hyperbolic trajectory
+            </summary>
+        </member>
+        <member name="T:VesselTargetModes">
+            <summary>
+            Describes what "properties" of a target (<see cref="T:ITargetable"/>) are targetable.
+            </summary>
+        </member>
+        <member name="F:VesselTargetModes.None">
+            <summary>
+            None. How is this useful?
+            </summary>
+        </member>
+        <member name="F:VesselTargetModes.Direction">
+            <summary>
+            Only the direction of the taget. Used by <see cref="T:CelestialBody"/>.
+            </summary>
+        </member>
+        <member name="F:VesselTargetModes.DirectionAndVelocity">
+            <summary>
+            Direction and velocity. Used by <see cref="T:Vessel"/>.
+            </summary>
+        </member>
+        <member name="F:VesselTargetModes.DirectionVelocityAndOrientation">
+            <summary>
+            Direction, velocity, and orientation. Used by <see cref="T:ModuleDockingNode"/>.
             </summary>
         </member>
     </members>
