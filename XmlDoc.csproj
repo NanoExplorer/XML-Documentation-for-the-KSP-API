@@ -21,6 +21,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\Assembly-CSharp.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -142,13 +143,16 @@
     <None Include="README.md" />
     <None Include="src\main.md" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assembly-CSharp.xml" />
+    <Content Include="UnityEngine.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>copy /Y "$(TargetDir)Assembly-CSharp.xml" "$(ProjectDir)Assembly-CSharp.xml"
-copy /Y "$(TargetDir)UnityEngine.xml" "$(ProjectDir)UnityEngine.xml"
 
-copy /Y "$(KspPath)KSP_Data\Managed\Assembly-CSharp.xml" "$(ProjectDir)Assembly-CSharp.xml"
-copy /Y "$(KspPath)KSP_Data\Managed\UnityEngine.xml" "$(ProjectDir)UnityEngine.xml"</PostBuildEvent>
+copy /Y "$(ProjectDir)Assembly-CSharp.xml" "$(KspPath)KSP_Data\Managed\Assembly-CSharp.xml"
+copy /Y "$(ProjectDir)UnityEngine.xml" "$(KspPath)KSP_Data\Managed\UnityEngine.xml"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
