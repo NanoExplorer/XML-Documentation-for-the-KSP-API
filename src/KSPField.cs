@@ -15,9 +15,13 @@ public class KSPField : Attribute
 {
     public string category;
     /// <summary>
-    /// Whether to show the value of this field in the right click menu of the part.
+    /// Whether to show the value of this field in the right click menu of the part during flight.
     /// </summary>
     public bool guiActive;
+    /// <summary>
+    /// Whether to show the value of this field in the right click menu of the part in the editor.
+    /// </summary>
+    public bool guiActiveEditor;
     /// <summary>
     /// The format string that will be passed to ToString when displaying the value of your field
     /// in the right click menu of the part?
@@ -37,6 +41,7 @@ public class KSPField : Attribute
     /// reload it from persistent.sfs when the game state is loaded.
     /// </summary>
     public bool isPersistant;
+
 
     public extern KSPField();
 }

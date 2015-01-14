@@ -21,9 +21,13 @@ public class KSPEvent : Attribute
     /// </summary>
     public bool externalToEVAOnly;
     /// <summary>
-    /// Whether the event is shown as available in the right click menu (active must also be true).
+    /// Whether the event is shown as available in the right click menu during flight (active must also be true).
     /// </summary>
     public bool guiActive;
+    /// <summary>
+    /// Whether the event is shown as available in the right click menu in the editor (active must also be true).
+    /// </summary>
+    public bool guiActiveEditor;
     /// <summary>
     /// Whether the event is shown as available in the right click menu even when
     /// the part is on a ship not currently being controlled by the player (but

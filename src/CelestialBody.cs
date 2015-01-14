@@ -6,7 +6,7 @@ using UnityEngine;
 /// <summary>
 /// The Sun, the planets, and the moons are all CelestialBodies.
 /// </summary>
-public class CelestialBody /*: MonoBehaviour, ITargetable, IDiscoverable*/
+public class CelestialBody : MonoBehaviour, ITargetable, IDiscoverable
 {   
     public float altitudeMultiplier;
     public float altitudeOffset;
@@ -39,7 +39,12 @@ public class CelestialBody /*: MonoBehaviour, ITargetable, IDiscoverable*/
     /// </summary>
     public double atmosphereScaleHeight;
     public Color atmosphericAmbientColor;
+
+    /// <summary>
+    /// Biome map for the celestial body
+    /// </summary>
     public CBAttributeMap BiomeMap;
+
     public string bodyDescription;
     /// <summary>
     /// The name of the body, as a string.

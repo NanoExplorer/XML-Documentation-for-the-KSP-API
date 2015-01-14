@@ -17,8 +17,13 @@ public class FlightGlobals : MonoBehaviour
     public List<CelestialBody> bodies;
     public static double camera_altitude;
     public static Vector3d camera_position;
+
+    /// <summary>
+    /// The body whose sphere of influence the vessel is currently in.
+    /// </summary>
     public static CelestialBody currentMainBody;
     public float drag_multiplier;
+
     /// <summary>
     /// Use this FlightGlobals instance to access non-static members of FlightGlobals.
     /// For example, the current target is FlightGlobals.fetch.VesselTarget.
@@ -37,8 +42,15 @@ public class FlightGlobals : MonoBehaviour
     public static double ship_dns;
     public static double ship_geeForce;
     public static float ship_heading;
-    public static double ship_latitude;
-    public static double ship_longitude;
+    /// <summary>
+    /// Current latitude of the ship (radians)
+    /// </summary>
+    public extern static double ship_latitude { get; }
+
+    /// <summary>
+    /// Current longitude of the ship (radians)
+    /// </summary>
+    public extern static double ship_longitude { get; }
     public static Vector3 ship_MOI;
     public static double ship_obtSpeed;
     public static Vector3d ship_obtVelocity;
