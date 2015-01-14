@@ -21,7 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\Assembly-CSharp.xml</DocumentationFile>
+    <DocumentationFile>Assembly-CSharp.xml</DocumentationFile>
+    <NoWarn>0436</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -51,6 +52,7 @@
     <Compile Include="src\BaseActionList.cs" />
     <Compile Include="src\BinaryReader.cs" />
     <Compile Include="src\BinaryWriter.cs" />
+    <Compile Include="src\CBAttributeMapSO.cs" />
     <Compile Include="src\CelestialBody.cs" />
     <Compile Include="src\ConfigNode.cs" />
     <Compile Include="src\ControlTypes.cs" />
@@ -149,9 +151,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y "$(TargetDir)Assembly-CSharp.xml" "$(ProjectDir)Assembly-CSharp.xml"
-
-copy /Y "$(ProjectDir)Assembly-CSharp.xml" "$(KspPath)KSP_Data\Managed\Assembly-CSharp.xml"
+    <PostBuildEvent>copy /Y "$(ProjectDir)Assembly-CSharp.xml" "$(KspPath)KSP_Data\Managed\Assembly-CSharp.xml"
 copy /Y "$(ProjectDir)UnityEngine.xml" "$(KspPath)KSP_Data\Managed\UnityEngine.xml"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
