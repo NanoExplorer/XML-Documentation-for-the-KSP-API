@@ -2373,16 +2373,23 @@
         </member>
         <member name="T:FloatCurve">
             <summary>
-            Represents a function of one variable. The function is interpolated from a given set of points,
-            and optionally the tangents at those points can be specified.
+            Represents a function of one variable. The function is interpolated from a 
+            given set of points, and optionally the tangents at those points can be 
+            specified. Uses splines to define the curve.
+            
+            References:
+            http://forum.kerbalspaceprogram.com/threads/93332-INFO-KSP-floatCurves-and-you-the-magic-of-tangents
             </summary>
         </member>
         <member name="M:FloatCurve.Evaluate(System.Single)">
             <summary>
             Evaluate the function at a given value of the input parameter.
+            
             </summary>
             <param name="time">The input parameter (not necessarily a time).</param>
-            <returns>The value of the function.</returns>
+            <returns>
+            The value of the function.
+            </returns>
         </member>
         <member name="T:FuelLine">
             <summary>
@@ -3940,7 +3947,7 @@
         <member name="T:KSPField">
             <summary>
             Apply this attribute to a field in a PartModule or ScenarioModule to make the field 
-            get automatically initialized from the cfg file, and optionally persistent. See
+            get automatically initialized from the cfg file, and optionally persistent. 
             
             http://forum.kerbalspaceprogram.com/showthread.php/10296-0-15-code-update-PartModule-KSPField-KSPEvent-ConfigNode-and-PartResource
             </summary>
@@ -5756,6 +5763,63 @@
             will automatically advance to the next page.
             </summary>
             <param name="condition"></param>
+        </member>
+        <member name="T:UI_Control">
+            <summary>
+            Base for ui elements like toggle buttons (UI_Toggle) and sliders (UI_FloatRange)
+            </summary>
+        </member>
+        <member name="F:UI_Control.scene">
+            <summary>
+            Controls what scenes an element is visible in
+            </summary>
+        </member>
+        <member name="T:UI_FloatRange">
+            <summary>
+            Adds a slider to the right-click UI
+            
+            <para>
+            Example for a field:
+            [KSPField, UI_FloatRange(minValue = -14f, maxValue = 14f, stepIncrement = 1f)]
+            public float mySlider= 0;
+            </para>
+            </summary>
+        </member>
+        <member name="F:UI_FloatRange.minValue">
+            <summary>
+            Sets the minimum value. It can be negative
+            </summary>
+        </member>
+        <member name="F:UI_FloatRange.maxValue">
+            <summary>
+            Sets the maximum value.
+            </summary>
+        </member>
+        <member name="F:UI_FloatRange.stepIncrement">
+            <summary>
+            Steps in which the slider will move
+            </summary>
+        </member>
+        <member name="T:UI_Toggle">
+            <summary>
+            Adds a toggleable button to the right-click UI
+            
+            <para>
+            Example for a field:
+            [KSPField, UI_Toggle(disabledText="Disabled", enabledText="Enabled")]
+            public bool myBool = true;
+            </para>
+            </summary>
+        </member>
+        <member name="F:UI_Toggle.enabledText">
+            <summary>
+            Text to show when enabled
+            </summary>
+        </member>
+        <member name="F:UI_Toggle.disabledText">
+            <summary>
+            Text to show when disabled
+            </summary>
         </member>
         <member name="T:UntrackedObjectClass">
             <summary>Describes an asteroid's size</summary>
