@@ -78,6 +78,7 @@
     <Compile Include="src\FuelLine.cs" />
     <Compile Include="src\FuelTank.cs" />
     <Compile Include="src\FuelTankGUI.cs" />
+    <Compile Include="src\Game.cs" />
     <Compile Include="src\GameEvents.cs" />
     <Compile Include="src\GamePersistence.cs" />
     <Compile Include="src\GameScenes.cs" />

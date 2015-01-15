@@ -2405,6 +2405,11 @@
             An unused class.
             </summary>
         </member>
+        <member name="F:Game.Mode">
+            <summary>
+            Contains the current mode of the game. Career, sandbox, etc.
+            </summary>
+        </member>
         <member name="T:GameEvents">
             <summary>
             GameEvents are EventData or EventVoid methods called when certain conditions are met.
@@ -3176,6 +3181,11 @@
         <member name="T:HighLogic">
             <summary>
             This class stores some very high-level information about the current game state.
+            </summary>
+        </member>
+        <member name="F:HighLogic.currentGame">
+            <summary>
+            Contains more information and methods applying to the game state.
             </summary>
         </member>
         <member name="F:HighLogic.fetch">

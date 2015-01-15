@@ -11,8 +11,13 @@ using UnityEngine;
 /// </summary>
 public class HighLogic : MonoBehaviour
 {
+    /// <summary>
+    /// Contains more information and methods applying to the game state.
+    /// </summary>
     public Game currentGame;
+
     public static bool FastEditorLoading;
+
     /// <summary>
     /// Use this instance to access non-static members of this class.
     /// </summary>
