@@ -18,6 +18,10 @@ public class PartModule : MonoBehaviour
     public string moduleName;
     public ProtoPartModuleSnapshot snapshot;
 
+    /// <summary>
+    /// The constructor, avoid and use Awake instead for initialization.
+    /// http://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html
+    /// </summary>
     public extern PartModule();
 
     /// <summary>
@@ -51,7 +55,8 @@ public class PartModule : MonoBehaviour
     public extern virtual string GetInfo();
     public extern void Load(ConfigNode node);
     /// <summary>
-    /// This function is called once when the part gets activated.
+    /// This function is called once when the part gets activated/enabled. Usually from staging. 
+    /// Can be triggered directly through part.force_activate()
     /// </summary>
     public extern virtual void OnActive();
     /// <summary>
@@ -65,7 +70,7 @@ public class PartModule : MonoBehaviour
     /// </summary>
     public extern virtual void OnFixedUpdate();
     /// <summary>
-    /// When does this get called?
+    /// Called when the part is deactivated. Usually because it was destroyed. 
     /// </summary>
     public extern virtual void OnInactive();
     /// <summary>
