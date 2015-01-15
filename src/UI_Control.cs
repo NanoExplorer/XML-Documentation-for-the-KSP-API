@@ -5,9 +5,15 @@
 
 using System;
 
+/// <summary>
+/// Base for ui elements like toggle buttons (UI_Toggle) and sliders (UI_FloatRange)
+/// </summary>
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Field | AttributeTargets.Property)]
 public abstract class UI_Control : Attribute
 {
+    /// <summary>
+    /// Controls what scenes an element is visible in
+    /// </summary>
     public UI_Scene scene;
     public bool controlEnabled;
     protected BaseField field;

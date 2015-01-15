@@ -6,7 +6,7 @@ using System;
 
 /// <summary>
 /// Apply this attribute to a field in a PartModule or ScenarioModule to make the field 
-/// get automatically initialized from the cfg file, and optionally persistent. See
+/// get automatically initialized from the cfg file, and optionally persistent. 
 /// 
 /// http://forum.kerbalspaceprogram.com/showthread.php/10296-0-15-code-update-PartModule-KSPField-KSPEvent-ConfigNode-and-PartResource
 /// </summary>
