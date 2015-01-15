@@ -22,6 +22,16 @@ public class KSPAction : Attribute
     /// </summary>
     public string guiName;
 
+    /// <summary>
+    /// Apply this attribute to a function to allow it to be called via action groups.
+    /// </summary>
+    /// <param name="guiName">The name to show for the action.</param>
     public extern KSPAction(string guiName);
+    /// <summary>
+    /// Apply this attribute to a function to allow it to be called via action groups.
+    /// </summary>
+    /// <param name="guiName">The name to show for the action.</param>
+    /// <param name="actionGroup">Automatically adds the action to the specified 
+    /// Action Group when adding the part to your vessel. Defaults to KSPActionGroup.None.</param>
     public extern KSPAction(string guiName, KSPActionGroup actionGroup);
 }
