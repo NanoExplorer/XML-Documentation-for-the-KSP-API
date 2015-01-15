@@ -601,10 +601,111 @@
             <param name="flight"></param>
             <returns></returns>
         </member>
+        <member name="T:CBAttributeMapSO">
+            <summary>
+            Contains the biome map and definitions for each biome for a celestial body
+            </summary>
+        </member>
+        <member name="F:CBAttributeMapSO.Map">
+            <summary>
+            The biome map is stored as a 2d image, colors are used to define the biomes.
+            </summary>
+        </member>
+        <member name="F:CBAttributeMapSO.Attributes">
+            <summary>
+            The list of biomes for this map
+            </summary>
+        </member>
+        <member name="F:CBAttributeMapSO.nonExactThreshold">
+            <summary>
+            (Guessing) the delta to use when comparing colors, nessary because they're stored as floats.
+            </summary>
+        </member>
+        <member name="M:CBAttributeMapSO.GetAtt(System.Double,System.Double)">
+            <summary>
+            Gets the biome information for the passed latitude and longitude
+            </summary>
+            <param name="lat">Latitude (radians)</param>
+            <param name="lon">Longitude (radians)</param>
+            <returns></returns>
+        </member>
+        <member name="F:CBAttributeMapSO.MapAttribute.mapColor">
+            <summary>
+            Colors are used to deliniate different biomes
+            </summary>
+        </member>
+        <member name="F:CBAttributeMapSO.MapAttribute.name">
+            <summary>
+            Name of the biome
+            </summary>
+        </member>
         <member name="T:CelestialBody">
             <summary>
             The Sun, the planets, and the moons are all CelestialBodies.
             </summary>
+        </member>
+        <member name="T:ITargetable">
+            <summary>
+            Represents something that can be set as target while controlling
+            a vessel. This is implemented by <see cref="T:Vessel"/>, <see cref="T:CelestialBody"/>,
+            and <see cref="T:ModuleDockingNode"/>.
+            </summary>
+        </member>
+        <member name="M:ITargetable.GetName">
+            <summary>
+            The name of this target.
+            </summary>
+        </member>
+        <member name="T:IDiscoverable">
+             <summary>Methods allowing information for celestial bodies or ships to be hidden at game start</summary>
+            
+             <remarks>
+             These methods appear to be used in the tracking station.
+            
+             Implemented by CelestialBody
+             Implemented by Vessel
+             </remarks>
+        </member>
+        <member name="M:IDiscoverable.RevealAltitude">
+             <summary>Returns the object's altitude</summary>
+             
+             <returns>The height above the reference sphere of the Celestial Body in 
+            	whose sphere of influence the object lies, in meters.</returns>
+            
+        </member>
+        <member name="M:IDiscoverable.RevealMass">
+             <summary>Returns the object's mass</summary>
+            
+             <remarks>Units are implementation-dependent.</remarks>
+        </member>
+        <member name="M:IDiscoverable.RevealName">
+             <summary>Returns the object's tracking station name</summary>
+            
+             <returns>The string to display in the tracking station</returns>
+             
+        </member>
+        <member name="M:IDiscoverable.RevealSituationString">
+             <summary>Describes the state of the object</summary>
+            
+             <returns>A string containing the sphere of influence and trajectory of the object
+             
+             <example>"Orbiting the Sun"</example>
+             </returns>
+        </member>
+        <member name="M:IDiscoverable.RevealSpeed">
+             <summary>Returns the speed of the object</summary>
+            
+             <returns>The inertial speed relative to the Celestial Body in whose sphere of influence 
+            	the object lies, in meters per second.</returns>
+            
+        </member>
+        <member name="M:IDiscoverable.RevealType">
+            <summary>Gives the type of object used</summary>
+            
+            <remarks>Meaning is implementation-dependent.</remarks>
+        </member>
+        <member name="P:IDiscoverable.DiscoveryInfo">
+            <summary>Describes to what extent this object has been explored</summary>
         </member>
         <member name="F:CelestialBody.angularV">
             <summary>
@@ -637,6 +738,11 @@
             <summary>
             The atmosphere's scale height, in KILOMETERS (not meters). The atmospheric pressure at a given altitude
             above sea level is proportional to Math.Exp(-altitude / atmosphereScaleHeight).
+            </summary>
+        </member>
+        <member name="F:CelestialBody.BiomeMap">
+            <summary>
+            Biome map for the celestial body
             </summary>
         </member>
         <member name="F:CelestialBody.bodyName">
@@ -2052,6 +2158,11 @@
             It also provides static utility functions for computing the atmospheric and gravitational properties of CelestialBodies.
             </summary>
         </member>
+        <member name="F:FlightGlobals.currentMainBody">
+            <summary>
+            The body whose sphere of influence the vessel is currently in.
+            </summary>
+        </member>
         <member name="F:FlightGlobals.fetch">
             <summary>
             Use this FlightGlobals instance to access non-static members of FlightGlobals.
@@ -2159,6 +2270,16 @@
             Sets the currently selected target vessel, celestial body, or docking node
             </summary>
             <param name="tgt">The Vessel, CelestialBody, or ModuleDockingNode to target</param>
+        </member>
+        <member name="P:FlightGlobals.ship_latitude">
+            <summary>
+            Current latitude of the ship (radians)
+            </summary>
+        </member>
+        <member name="P:FlightGlobals.ship_longitude">
+            <summary>
+            Current longitude of the ship (radians)
+            </summary>
         </member>
         <member name="P:FlightGlobals.ActiveVessel">
             <summary>
@@ -3077,57 +3198,6 @@
             The GUISkin used by the game. Set GUI.skin = HighLogic.Skin at the start of your GUI function to use it yourself.
             </summary>
         </member>
-        <member name="T:IDiscoverable">
-             <summary>Methods allowing information for celestial bodies or ships to be hidden at game start</summary>
-            
-             <remarks>
-             These methods appear to be used in the tracking station.
-            
-             Implemented by CelestialBody
-             Implemented by Vessel
-             </remarks>
-        </member>
-        <member name="M:IDiscoverable.RevealAltitude">
-             <summary>Returns the object's altitude</summary>
-             
-             <returns>The height above the reference sphere of the Celestial Body in 
-            	whose sphere of influence the object lies, in meters.</returns>
-            
-        </member>
-        <member name="M:IDiscoverable.RevealMass">
-             <summary>Returns the object's mass</summary>
-            
-             <remarks>Units are implementation-dependent.</remarks>
-        </member>
-        <member name="M:IDiscoverable.RevealName">
-             <summary>Returns the object's tracking station name</summary>
-            
-             <returns>The string to display in the tracking station</returns>
-             
-        </member>
-        <member name="M:IDiscoverable.RevealSituationString">
-             <summary>Describes the state of the object</summary>
-            
-             <returns>A string containing the sphere of influence and trajectory of the object
-             
-             <example>"Orbiting the Sun"</example>
-             </returns>
-        </member>
-        <member name="M:IDiscoverable.RevealSpeed">
-             <summary>Returns the speed of the object</summary>
-            
-             <returns>The inertial speed relative to the Celestial Body in whose sphere of influence 
-            	the object lies, in meters per second.</returns>
-            
-        </member>
-        <member name="M:IDiscoverable.RevealType">
-            <summary>Gives the type of object used</summary>
-            
-            <remarks>Meaning is implementation-dependent.</remarks>
-        </member>
-        <member name="P:IDiscoverable.DiscoveryInfo">
-            <summary>Describes to what extent this object has been explored</summary>
-        </member>
         <member name="T:InputLockManager">
             <summary>
             This class lets you lock the player out of certain controls. It's
@@ -3236,18 +3306,6 @@
             </summary>
             <param name="data"></param>
         </member>
-        <member name="T:ITargetable">
-            <summary>
-            Represents something that can be set as target while controlling
-            a vessel. This is implemented by <see cref="T:Vessel"/>, <see cref="T:CelestialBody"/>,
-            and <see cref="T:ModuleDockingNode"/>.
-            </summary>
-        </member>
-        <member name="M:ITargetable.GetName">
-            <summary>
-            The name of this target.
-            </summary>
-        </member>
         <member name="T:KerbalEVA">
             <summary>
             Kerbals on EVA are represented as vessels with a single part. That part contains a KerbalEVA PartModule.
@@ -3262,6 +3320,12 @@
             <para>http://forum.kerbalspaceprogram.com/showthread.php/10296-0-15-code-update-PartModule-KSPField-KSPEvent-ConfigNode-and-PartResource</para>
             </summary>
         </member>
+        <member name="M:PartModule.#ctor">
+            <summary>
+            The constructor, avoid and use Awake instead for initialization.
+            http://docs.unity3d.com/ScriptReference/MonoBehaviour.Awake.html
+            </summary>
+        </member>
         <member name="M:PartModule.GetInfo">
             <summary>
             The return value of this function appears in the part's description in the editor.
@@ -3270,7 +3334,8 @@
         </member>
         <member name="M:PartModule.OnActive">
             <summary>
-            This function is called once when the part gets activated.
+            This function is called once when the part gets activated/enabled. Usually from staging. 
+            Can be triggered directly through part.force_activate()
             </summary>
         </member>
         <member name="M:PartModule.OnAwake">
@@ -3287,7 +3352,7 @@
         </member>
         <member name="M:PartModule.OnInactive">
             <summary>
-            When does this get called?
+            Called when the part is deactivated. Usually because it was destroyed. 
             </summary>
         </member>
         <member name="M:PartModule.OnLoad(ConfigNode)">
@@ -3640,6 +3705,20 @@
             The name of this action as it appears in the action group editor.
             </summary>
         </member>
+        <member name="M:KSPAction.#ctor(System.String)">
+            <summary>
+            Apply this attribute to a function to allow it to be called via action groups.
+            </summary>
+            <param name="guiName">The name to show for the action.</param>
+        </member>
+        <member name="M:KSPAction.#ctor(System.String,KSPActionGroup)">
+            <summary>
+            Apply this attribute to a function to allow it to be called via action groups.
+            </summary>
+            <param name="guiName">The name to show for the action.</param>
+            <param name="actionGroup">Automatically adds the action to the specified 
+            Action Group when adding the part to your vessel. Defaults to KSPActionGroup.None.</param>
+        </member>
         <member name="T:KSPAddon">
             <summary>
             Apply this attribute to a class that derives from MonoBehaviour to have KSP automatically start up
@@ -3801,29 +3880,39 @@
         </member>
         <member name="F:KSPEvent.active">
             <summary>
-            Whether this event can be triggered through Part.SendEvent.
+            Whether this event can be triggered through Part.SendEvent. Defaults to true.
             </summary>
         </member>
         <member name="F:KSPEvent.externalToEVAOnly">
             <summary>
-            Whether the event is only available when out on EVA.
+            Only has an effect if guiActiveUnfocused is true, then it controls 
+            whether the event is active for nearby vessels or only for nearby EVAs. 
+            The default value is true, which means that the event is only active 
+            for nearby EVAs and not for nearby vessels.
             </summary>
         </member>
         <member name="F:KSPEvent.guiActive">
             <summary>
-            Whether the event is shown as available in the right click menu (active must also be true).
+            Whether the event is shown as available in the right click menu during 
+            flight (active must also be true).
+            </summary>
+        </member>
+        <member name="F:KSPEvent.guiActiveEditor">
+            <summary>
+            Whether the event is shown as available in the right click menu in the editor (active must also be true).
             </summary>
         </member>
         <member name="F:KSPEvent.guiActiveUnfocused">
             <summary>
             Whether the event is shown as available in the right click menu even when
             the part is on a ship not currently being controlled by the player (but
-            close enough to right click).
+            close enough to right click). For example during EVA.
             </summary>
         </member>
         <member name="F:KSPEvent.guiName">
             <summary>
-            The name shown for the event in the right click menu.
+            The name shown for the event in the right click menu. Defaults to an 
+            empty string which will cause KSP to use the method name.
             </summary>
         </member>
         <member name="F:KSPEvent.name">
@@ -3834,7 +3923,8 @@
         <member name="F:KSPEvent.unfocusedRange">
             <summary>
             When the part is on a ship not being controlled by the player,
-            how close the player needs to be (in meters) in order for the event to appear in the right click menu.
+            how close the player needs to be (in meters) in order for the event to 
+            appear in the right click menu.
             </summary>
         </member>
         <member name="T:KSPField">
@@ -3847,7 +3937,14 @@
         </member>
         <member name="F:KSPField.guiActive">
             <summary>
-            Whether to show the value of this field in the right click menu of the part.
+            Whether to show the value of this field in the right click menu of the part during flight.
+            Defaults to false.
+            </summary>
+        </member>
+        <member name="F:KSPField.guiActiveEditor">
+            <summary>
+            Whether to show the value of this field in the right click menu of the part in the editor.
+            Defaults to false.
             </summary>
         </member>
         <member name="F:KSPField.guiFormat">
@@ -3860,17 +3957,20 @@
         <member name="F:KSPField.guiName">
             <summary>
             The name that will be shown for this field in the right click menu of the part.
+            Defaults to the variable's name.
             </summary>
         </member>
         <member name="F:KSPField.guiUnits">
             <summary>
             The units that will be shown for this field in the right click menu of the part.
+            Defaults to an empty string.
             </summary>
         </member>
         <member name="F:KSPField.isPersistant">
             <summary>
             Whether to store the value of this field in persistent.sfs when the game state is saved, and
-            reload it from persistent.sfs when the game state is loaded.
+            reload it from persistent.sfs when the game state is loaded. 
+            Defaults to false.
             </summary>
         </member>
         <member name="T:KSPScenario">
