@@ -16,10 +16,12 @@ public class KSPField : Attribute
     public string category;
     /// <summary>
     /// Whether to show the value of this field in the right click menu of the part during flight.
+    /// Defaults to false.
     /// </summary>
     public bool guiActive;
     /// <summary>
     /// Whether to show the value of this field in the right click menu of the part in the editor.
+    /// Defaults to false.
     /// </summary>
     public bool guiActiveEditor;
     /// <summary>
@@ -30,15 +32,18 @@ public class KSPField : Attribute
     public string guiFormat;
     /// <summary>
     /// The name that will be shown for this field in the right click menu of the part.
+    /// Defaults to the variable's name.
     /// </summary>
     public string guiName;
     /// <summary>
     /// The units that will be shown for this field in the right click menu of the part.
+    /// Defaults to an empty string.
     /// </summary>
     public string guiUnits;
     /// <summary>
     /// Whether to store the value of this field in persistent.sfs when the game state is saved, and
-    /// reload it from persistent.sfs when the game state is loaded.
+    /// reload it from persistent.sfs when the game state is loaded. 
+    /// Defaults to false.
     /// </summary>
     public bool isPersistant;
 
