@@ -83,6 +83,7 @@
     <Compile Include="src\GamePersistence.cs" />
     <Compile Include="src\GameScenes.cs" />
     <Compile Include="src\HighLogic.cs" />
+    <Compile Include="src\IConfigNode.cs" />
     <Compile Include="src\IDiscoverable.cs" />
     <Compile Include="src\InputLockManager.cs" />
     <Compile Include="src\IOException.cs" />
@@ -135,6 +136,8 @@
     <Compile Include="src\TextWriter.cs" />
     <Compile Include="src\TimeWarp.cs" />
     <Compile Include="src\TutorialScenario.cs" />
+    <Compile Include="src\UI_Control.cs" />
+    <Compile Include="src\UI_Toggle.cs" />
     <Compile Include="src\UntrackedObjectClass.cs" />
     <Compile Include="src\Vector3d.cs" />
     <Compile Include="src\Vessel.cs" />
