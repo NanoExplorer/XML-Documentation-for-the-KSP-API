@@ -172,6 +172,10 @@ public class ModuleEngines : PartModule
     public extern override void OnLoad(ConfigNode node);
     public extern override void OnSave(ConfigNode node);
     public extern override void OnStart(PartModule.StartState state);
+    // <summary>
+    // Removes a certain mass of propellant from the tanks attached to the engine, using the engine's
+    // fuel mix. Returns (?) the fraction of propellant that was actually obtained (?).
+    // </summary>
     public extern double RequestPropellant(double mass);
     public extern void SetPowerGroupsActive(bool active);
     public extern void SetRunningGroupsActive(bool active);
